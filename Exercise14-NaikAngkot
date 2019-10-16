@@ -1,0 +1,41 @@
+function naikAngkot(arrPenumpang) {
+  rute = ['A', 'B', 'C', 'D', 'E', 'F'];
+   var ruteAwal, ruteAkhir
+   var arrResult = []
+   var penumpang, naikDari, tujuan
+   var harga = 0
+   var indexAwal,indexAkhir
+
+   for (var i = 0; i < arrPenumpang.length; i++){
+    nPenumpang = arrPenumpang[i][0]
+    nNaikDari = arrPenumpang[i][1]
+    nTujuan = arrPenumpang[i][2]
+
+    for(var r = 0; r < rute.length; r++){
+    if (nNaikDari == rute[r]){
+      indexAwal = r
+    }
+    else if(nTujuan == rute[r]){
+      indexAkhir = r
+    }
+    }
+
+    harga = Math.abs((indexAwal-indexAkhir)*2000)
+    
+    
+    var obj = {
+      penumpang : nPenumpang,
+      naikDari : nNaikDari,
+      bayar : harga
+    }
+     arrResult.push(obj)
+   }
+  return arrResult
+  }
+
+//TEST CASE
+console.log(naikAngkot([['Dimitri', 'B', 'F'], ['Icha', 'A', 'B']]));
+// [ { penumpang: 'Dimitri', naikDari: 'B', tujuan: 'F', bayar: 8000 },
+//   { penumpang: 'Icha', naikDari: 'A', tujuan: 'B', bayar: 2000 } ]
+
+console.log(naikAngkot([])); //[]

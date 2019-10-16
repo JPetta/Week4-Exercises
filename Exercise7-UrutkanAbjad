@@ -1,0 +1,17 @@
+function urutkanAbjad(str) {
+  var arrChar = []
+  for (var i = 0; i < str.length; i++){
+    arrChar.push(str[i])
+  }
+  arrChar.sort()
+  var strReversed = arrChar.join("")
+  return strReversed
+}
+
+
+// TEST CASES
+console.log(urutkanAbjad('hello')); // 'ehllo'
+console.log(urutkanAbjad('truncate')); // 'acenrttu'
+console.log(urutkanAbjad('developer')); // 'deeeloprv'
+console.log(urutkanAbjad('software')); // 'aeforstw'
+console.log(urutkanAbjad('aegis')); // 'aegis'

@@ -1,0 +1,139 @@
+function highestScore (students) {
+  var arrStudent =[]
+  for (var i = 0;i < students.length; i++){
+    var arrTemp= []
+    arrTemp.push(students[i].score)
+    arrTemp.push(students[i].name)
+    arrTemp.push(students[i].class)
+
+    arrStudent.push(arrTemp)
+}
+arrStudent.sort(function(a, b){return a - b});
+
+var arrFoxes=[]
+var arrWolves = []
+var arrTigers = []
+
+for (var i = 0;i < arrStudent.length; i++){
+  if (arrStudent[i][2]=='foxes'){
+    arrFoxes.push(arrStudent[i])
+    }
+  else if (arrStudent[i][2]=='wolves'){
+    arrWolves.push(arrStudent[i])
+    }
+  else if (arrStudent[i][2]=='tigers'){
+    arrTigers.push(arrStudent[i])
+    }
+}
+
+  var foxName = arrFoxes[0][1]
+  var foxScore =  arrFoxes[0][0]
+  var wolvesName = arrWolves[0][1]
+  var wolvesScore = arrWolves[0][0]
+
+  if(arrTigers.length != 0){
+    var tigersName = arrTigers[0][1]
+    var tigersScore = arrTigers[0][0]}
+  else {
+    tigersName = null
+    tigersScore = null
+  }
+
+  var objHighestFox = {
+    name : foxName,
+    score : foxScore
+  }
+
+  var objHighestWolves = {
+    name : wolvesName,
+    score : wolvesScore
+  }
+
+  var objHighestTigers = {
+    name : tigersName,
+    score : tigersScore
+  }
+
+  var objHighestOverall = {
+    foxes : objHighestFox,
+    wolves : objHighestWolves,
+    tigers : objHighestTigers
+  }
+
+  if(arrTigers.length == 0){
+    delete objHighestOverall['tigers']
+  }
+
+  return objHighestOverall
+}
+
+
+
+
+
+// TEST CASE
+console.log(highestScore([
+  {
+    name: 'Dimitri',
+    score: 90,
+    class: 'foxes'
+  },
+  {
+    name: 'Alexei',
+    score: 85,
+    class: 'wolves'
+  },
+  {
+    name: 'Sergei',
+    score: 74,
+    class: 'foxes'
+  },
+  {
+    name: 'Anastasia',
+    score: 78,
+    class: 'wolves'
+  }
+]));
+
+// {
+//   foxes: { name: 'Dimitri', score: 90 },
+//   wolves: { name: 'Alexei', score: 85 }
+// }
+
+
+console.log(highestScore([
+  {
+    name: 'Alexander',
+    score: 100,
+    class: 'foxes'
+  },
+  {
+    name: 'Alisa',
+    score: 76,
+    class: 'wolves'
+  },
+  {
+    name: 'Vladimir',
+    score: 92,
+    class: 'foxes'
+  },
+  {
+    name: 'Albert',
+    score: 71,
+    class: 'wolves'
+  },
+  {
+    name: 'Viktor',
+    score: 80,
+    class: 'tigers'
+  }
+]));
+
+// {
+//   foxes: { name: 'Alexander', score: 100 },
+//   wolves: { name: 'Alisa', score: 76 },
+//   tigers: { name: 'Viktor', score: 80 }
+// }
+
+
+// console.log(highestScore([])); //{}

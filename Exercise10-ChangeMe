@@ -1,0 +1,41 @@
+function changeMe(arr) {
+  var arrObj =[]
+
+  for(var i =0; i < arr.length; i++){
+    var fn,ln,g,ag
+
+    fn = arr[i][0]
+    ln = arr[i][1]
+    g = arr[i][2]
+    ag = arr[i][3]
+
+    if (ag == undefined){
+      toString(ag)
+      ag = "Invalid Birth Year"
+    }
+
+    var objBiodata = {
+      firstName : fn,
+      lastName : ln,
+      gender : g,
+      age : ag
+    }
+    var header =(i+1)+". "+fn+" "+ln
+    arrObj.push(header)
+    arrObj.push(objBiodata)
+  }
+  console.log(arrObj)
+}
+
+// TEST CASES
+changeMe([['Christ', 'Evans', 'Male', 1982], ['Robert', 'Downey', 'Male']]); // 1. Christ Evans:
+// { firstName: 'Christ',
+//   lastName: 'Evans',
+//   gender: 'Male',
+//   age: 37 }
+// 2. Robert Downey:
+// { firstName: 'Robert',
+//   lastName: 'Downey',
+//   gender: 'Male',
+//   age: 'Invalid Birth Year' }
+changeMe([]); // ""
